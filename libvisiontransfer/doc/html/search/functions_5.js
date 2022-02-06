@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['imageprotocol',['ImageProtocol',['../classvisiontransfer_1_1ImageProtocol.html#af116eff7c6560ab98e66d74dcdb0c0fb',1,'visiontransfer::ImageProtocol']]],
+  ['imageset',['ImageSet',['../classvisiontransfer_1_1ImageSet.html#a80cdf98e3a53de026f11df4dbfe6069e',1,'visiontransfer::ImageSet::ImageSet()'],['../classvisiontransfer_1_1ImageSet.html#a77d3c03956d144ef14b20e9d8a5c180a',1,'visiontransfer::ImageSet::ImageSet(const ImageSet &amp;other)']]],
+  ['imagesreceived',['imagesReceived',['../classvisiontransfer_1_1ImageProtocol.html#a1d353fb728dba295f3484b9fe4a2b4a9',1,'visiontransfer::ImageProtocol']]],
+  ['imagetransfer',['ImageTransfer',['../classvisiontransfer_1_1ImageTransfer.html#a27741960cfb1407038449e5bb1e7cf3d',1,'visiontransfer::ImageTransfer::ImageTransfer(const char *address, const char *service=&quot;7681&quot;, ImageProtocol::ProtocolType protType=ImageProtocol::PROTOCOL_UDP, bool server=false, int bufferSize=1048576, int maxUdpPacketSize=1472)'],['../classvisiontransfer_1_1ImageTransfer.html#a09994bb18afa0045ef0c993ee7538b56',1,'visiontransfer::ImageTransfer::ImageTransfer(const DeviceInfo &amp;device, int bufferSize=1048576, int maxUdpPacketSize=1472)']]],
+  ['imuavailable',['imuAvailable',['../classvisiontransfer_1_1DataChannelService.html#a7287cee0d328acb2b77bd6a616adcd5f',1,'visiontransfer::DataChannelService']]],
+  ['imugetacceleration',['imuGetAcceleration',['../classvisiontransfer_1_1DataChannelService.html#ab47c48614996ba0e198f795d133a0001',1,'visiontransfer::DataChannelService']]],
+  ['imugetaccelerationseries',['imuGetAccelerationSeries',['../classvisiontransfer_1_1DataChannelService.html#a8ce4fefbf2ba319d56bd63eca490b4d1',1,'visiontransfer::DataChannelService']]],
+  ['imugetgravity',['imuGetGravity',['../classvisiontransfer_1_1DataChannelService.html#adc1b9f339bf2ff3938b465678d7c6cf8',1,'visiontransfer::DataChannelService']]],
+  ['imugetgravityseries',['imuGetGravitySeries',['../classvisiontransfer_1_1DataChannelService.html#a3fcfc343780aace351ae7f9c034ef196',1,'visiontransfer::DataChannelService']]],
+  ['imugetgyroscope',['imuGetGyroscope',['../classvisiontransfer_1_1DataChannelService.html#a106db8ca9014a1d7afdf3ea31915cfec',1,'visiontransfer::DataChannelService']]],
+  ['imugetgyroscopeseries',['imuGetGyroscopeSeries',['../classvisiontransfer_1_1DataChannelService.html#ab74baba90b91436c42379120e8863990',1,'visiontransfer::DataChannelService']]],
+  ['imugetlinearacceleration',['imuGetLinearAcceleration',['../classvisiontransfer_1_1DataChannelService.html#a5875eae66dbc46c4c93739ef58e88176',1,'visiontransfer::DataChannelService']]],
+  ['imugetlinearaccelerationseries',['imuGetLinearAccelerationSeries',['../classvisiontransfer_1_1DataChannelService.html#accf0b96ab15410ce354939a98679352c',1,'visiontransfer::DataChannelService']]],
+  ['imugetmagnetometer',['imuGetMagnetometer',['../classvisiontransfer_1_1DataChannelService.html#ae5bfa96a79cb025c1d4f8629da4c09d4',1,'visiontransfer::DataChannelService']]],
+  ['imugetmagnetometerseries',['imuGetMagnetometerSeries',['../classvisiontransfer_1_1DataChannelService.html#a5194700f4682f6898d78314ea04513dd',1,'visiontransfer::DataChannelService']]],
+  ['imugetrotationquaternion',['imuGetRotationQuaternion',['../classvisiontransfer_1_1DataChannelService.html#ac3db98b06bdf33993f512a3408142f80',1,'visiontransfer::DataChannelService']]],
+  ['imugetrotationquaternionseries',['imuGetRotationQuaternionSeries',['../classvisiontransfer_1_1DataChannelService.html#ab3b4cdfcad09a4c07bfe453c7d9ada5d',1,'visiontransfer::DataChannelService']]],
+  ['initialize',['initialize',['../classvisiontransfer_1_1internal_1_1ClientSideDataChannelIMUBNO080.html#a0d7ba39eb633a7a31b7c6540f1b02470',1,'visiontransfer::internal::ClientSideDataChannelIMUBNO080::initialize()'],['../classvisiontransfer_1_1internal_1_1DataChannel.html#a3914e5491a622fbf774279b6fe6d90d3',1,'visiontransfer::internal::DataChannel::initialize()']]],
+  ['iscompatible',['isCompatible',['../classvisiontransfer_1_1DeviceInfo.html#a8251a0137c899c574ba937230a3a2367',1,'visiontransfer::DeviceInfo']]],
+  ['isconnected',['isConnected',['../classvisiontransfer_1_1AsyncTransfer.html#afd65ccadb04d4e57e010efc6e004f737',1,'visiontransfer::AsyncTransfer::isConnected()'],['../classvisiontransfer_1_1internal_1_1DataBlockProtocol.html#a0ded24e5ebd96b347b75bf3310b74f8a',1,'visiontransfer::internal::DataBlockProtocol::isConnected()'],['../classvisiontransfer_1_1ImageProtocol.html#a9e79b5560c5fb78c26d7c1f25621cadd',1,'visiontransfer::ImageProtocol::isConnected()'],['../classvisiontransfer_1_1ImageTransfer.html#a7492b8a121c0942b348ffee8f0221d87',1,'visiontransfer::ImageTransfer::isConnected()']]],
+  ['iswriteable',['isWriteable',['../classvisiontransfer_1_1ParameterInfo.html#a35bb7f8dadde2185b03711e4bd1b58b3',1,'visiontransfer::ParameterInfo']]]
+];

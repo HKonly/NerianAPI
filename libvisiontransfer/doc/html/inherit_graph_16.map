@@ -1,0 +1,4 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classvisiontransfer_1_1internal_1_1DataChannel.html" title="Base class all data channel services derive from (once on the server side, once on the API side) ..." alt="" coords="5,5,176,47"/>
+<area shape="rect" id="node2" href="$classvisiontransfer_1_1internal_1_1ClientSideDataChannelIMUBNO080.html" title="Encapsulated receiver with ring buffers for IMU / environment sensor data. " alt="" coords="224,5,483,47"/>
+</map>

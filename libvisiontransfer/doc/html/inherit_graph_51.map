@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classvisiontransfer_1_1SensorRecord.html" title="Base class for sensor records with timestamp and status (reliability) fields. " alt="" coords="5,78,213,105"/>
+<area shape="rect" id="node2" href="$classvisiontransfer_1_1TimestampedQuaternion.html" title="Encapsulate a 4D (quaternion) sensor report, containing X, Y, Z, W, as well as timestamp and status f..." alt="" coords="261,5,472,47"/>
+<area shape="rect" id="node3" href="$classvisiontransfer_1_1TimestampedScalar.html" title="Encapsulate a scalar sensor measurement, containing the value, as well as timestamp and status fields..." alt="" coords="261,71,472,112"/>
+<area shape="rect" id="node4" href="$classvisiontransfer_1_1TimestampedVector.html" title="Encapsulate a 3D sensor report, containing X, Y, Z, as well as timestamp and status fields..." alt="" coords="261,136,472,177"/>
+</map>

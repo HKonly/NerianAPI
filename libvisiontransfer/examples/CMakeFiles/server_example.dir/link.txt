@@ -1,0 +1,1 @@
+/usr/bin/c++   -O3 -Wall -march=native -std=c++14 -O3 -Wall -march=native -std=c++98  -rdynamic CMakeFiles/server_example.dir/server_example.cpp.o  -o server_example  -Wl,-rpath,/home/parallels/work/Huawei-context-IDS-2021/data_collector/test_codes/NerianAPI/libvisiontransfer/lib ../lib/libvisiontransfer.so -lpthread 
