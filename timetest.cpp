@@ -26,10 +26,8 @@ int main() {
     AsyncTransfer transfer(devices[0]);
 
     std::string addr = transfer.getRemoteAddress();
-    printf("%s\n", addr.c_str());
-    
-    std::string status = transfer.statusReport();
-    printf("%s\n", status.c_str());
+    printf("%s ", addr.c_str());
+    printf(transfer.isConnected() ? "Connected\n" : "Not connected\n");
 
     usleep(250000);
     if(!service.imuAvailable()) {
