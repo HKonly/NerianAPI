@@ -64,12 +64,23 @@ if(WIN32)
     set(EXTRA_LIBS ws2_32)
 endif()
 
+add_executable(input_transfer_example
+    input_transfer_example.cpp
+)
+if(NOT MSVC)
+    string(REPLACE "-std=c++98" "-std=c++14" COMPILE_FLAGS_CXX14 "${CMAKE_CXX_FLAGS}")
+    set_target_properties(input_transfer_example PROPERTIES COMPILE_FLAGS "${COMPILE_FLAGS_CXX14}")
+endif()
+target_link_libraries(input_transfer_example visiontransfer${LIB_SUFFIX})
+
+
 target_link_libraries(asynctransfer_example ${EXTRA_LIBS})
 target_link_libraries(imagetransfer_example ${EXTRA_LIBS})
 target_link_libraries(server_example ${EXTRA_LIBS})
 target_link_libraries(parameter_example ${EXTRA_LIBS})
 target_link_libraries(parameter_enumeration_example ${EXTRA_LIBS})
 target_link_libraries(imu_data_channel_example ${EXTRA_LIBS})
+target_link_libraries(input_transfer_example ${EXTRA_LIBS})
 
 # PCL example
 if(PCL_FOUND)
@@ -82,7 +93,7 @@ if(PCL_FOUND)
         string(REPLACE "-std=c++98" "-std=c++14" COMPILE_FLAGS_CXX14 "${CMAKE_CXX_FLAGS}")
         set_target_properties(pcl_example PROPERTIES COMPILE_FLAGS "${COMPILE_FLAGS_CXX14}")
     endif()
-    
+
     target_link_libraries(pcl_example visiontransfer${LIB_SUFFIX} ${PCL_COMMON_LIBRARIES} ${PCL_IO_LIBRARIES} ${PCL_FILTERS_LIBRARIES} ${EXTRA_LIBS})
 endif()
 
@@ -91,13 +102,13 @@ if(OpenCV_FOUND)
     add_executable(opencv_example
         opencv_example.cpp
     )
-    
+
     if(NOT MSVC)
         # OpenCV >=4.0 needs C++11, so we will not build this specific one with C++98
         string(REPLACE "-std=c++98" "-std=c++11" COMPILE_FLAGS_CXX11 "${CMAKE_CXX_FLAGS}")
         set_target_properties(opencv_example PROPERTIES COMPILE_FLAGS "${COMPILE_FLAGS_CXX11}")
     endif()
-    
+
     target_link_libraries(opencv_example visiontransfer${LIB_SUFFIX} ${OpenCV_LIBS} ${EXTRA_LIBS})
 endif()
 

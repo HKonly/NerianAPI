@@ -246,7 +246,6 @@ void ImageSet::setIndexOf(ImageType what, int idx) {
                 break;
             }
         default:
-            std::cout << "what=" << what << std::endl;
             throw std::runtime_error("Invalid ImageType for setIndexOf!");
     }
 }

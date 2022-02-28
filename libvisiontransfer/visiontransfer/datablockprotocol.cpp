@@ -124,6 +124,8 @@ void DataBlockProtocol::setTransferHeader(unsigned char* data, int headerSize, i
         throw ProtocolException("Header data set while transfer is active!");
     } else if(headerSize + 9 > static_cast<int>(sizeof(controlMessageBuffer))) {
         throw ProtocolException("Transfer header is too large!");
+    } else if(blocks == 0) {
+        throw ProtocolException("Requested transfer of 0 blocks!");
     }
 
     numTransferBlocks = blocks;
@@ -198,7 +200,7 @@ const unsigned char* DataBlockProtocol::getTransferMessage(int& length) {
     }
 
     // For TCP we always send the header first
-    if(protType == PROTOCOL_TCP && !anyPayloadReceived() && transferHeaderData != nullptr) {
+    if(protType == PROTOCOL_TCP && transferHeaderData != nullptr) {
         length = transferHeaderSize;
         const unsigned char* ret = transferHeaderData;
         transferHeaderData = nullptr;
@@ -227,19 +229,35 @@ const unsigned char* DataBlockProtocol::getTransferMessage(int& length) {
         lastTransmittedBlock = block;
         return &rawDataArr[block][offset];
     } else {
-        // For tcp, we *PRE*pend the header consisting of segment offset plus the packet payload size
+        // For tcp, we *PRE*pend the segment header consisting of segment offset plus the packet payload size
         int headerOffset = offset - sizeof(SegmentHeaderTCP);
-        overwrittenTransferBlock = block;
-        overwrittenTransferIndex = headerOffset;
-        SegmentHeaderTCP* segmentHeader = reinterpret_cast<SegmentHeaderTCP*>(&rawDataArr[block][headerOffset]);
-        std::memcpy(overwrittenTransferData, segmentHeader, sizeof(SegmentHeaderTCP));
-        segmentHeader->fragmentSize = htons(length);
+
+        SegmentHeaderTCP* segmentHeader = nullptr;
+        unsigned char* dataPointer = nullptr;
+
+        if(headerOffset < 0) {
+            // For the first TCP transfer we need to copy the data as we cannot
+            // prepend before the data start
+            static unsigned char tcpBuffer[MAX_TCP_BYTES_TRANSFER];
+            dataPointer = tcpBuffer;
+            segmentHeader = reinterpret_cast<SegmentHeaderTCP*>(tcpBuffer);
+            std::memcpy(&tcpBuffer[sizeof(segmentHeader)], &rawDataArr[block][offset], length);
+        } else {
+            // For subsequent calls we will overwrite the segment header data and
+            // restore it
+            dataPointer = &rawDataArr[block][headerOffset];
+            segmentHeader = reinterpret_cast<SegmentHeaderTCP*>(&rawDataArr[block][headerOffset]);
+            overwrittenTransferBlock = block;
+            overwrittenTransferIndex = headerOffset;
+            std::memcpy(overwrittenTransferData, segmentHeader, sizeof(SegmentHeaderTCP));
+        }
+
+        segmentHeader->fragmentSize = htonl(length);
         segmentHeader->segmentOffset = static_cast<int>(htonl(mergeRawOffset(block, offset)));
         length += sizeof(SegmentHeaderTCP);
         lastTransmittedBlock = block;
-        return &rawDataArr[block][headerOffset];
+        return dataPointer;
     }
-
 }
 
 void DataBlockProtocol::getNextTransferSegment(int& block, int& offset, int& length) {
@@ -321,7 +339,7 @@ int DataBlockProtocol::getMaxReceptionSize() const {
 }
 
 unsigned char* DataBlockProtocol::getNextReceiveBuffer(int maxLength) {
-    if(receiveOffset + maxLength > receiveBuffer.size()) {
+    if(receiveOffset + maxLength > (int)receiveBuffer.size()) {
         receiveBuffer.resize(receiveOffset + maxLength);
     }
     return &receiveBuffer[receiveOffset];
@@ -509,7 +527,7 @@ void DataBlockProtocol::processReceivedTcpMessage(int length, bool& transferComp
         int ofs = 0;
         while ((receiveOffset - ofs) >= (int) sizeof(SegmentHeaderTCP)) {
             SegmentHeaderTCP* header = reinterpret_cast<SegmentHeaderTCP*>(&receiveBuffer[ofs]);
-            int fragsize = ntohs(header->fragmentSize);
+            int fragsize = ntohl(header->fragmentSize);
             int rawSegmentOffset = ntohl(header->segmentOffset);
             int block, offset;
             splitRawOffset(rawSegmentOffset, block, offset);

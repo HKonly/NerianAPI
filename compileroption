@@ -1,1 +1,0 @@
-g++ -o timetest timetest.o -Wall -L./lib -I./include -lvisiontransfer -pthread -Wl,-rpath ./lib

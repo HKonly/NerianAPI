@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libvisiontransfer
-   &#160;<span id="projectnumber">9.0.2</span>
+   &#160;<span id="projectnumber">9.0.3</span>
    </div>
   </td>
  </tr>
@@ -99,9 +99,9 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a27741960cfb1407038449e5bb1e7cf3d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisiontransfer_1_1ImageTransfer.html#a27741960cfb1407038449e5bb1e7cf3d">ImageTransfer</a> (const char *address, const char *service=&quot;7681&quot;, <a class="el" href="classvisiontransfer_1_1ImageProtocol.html#a797817081629c3edcc1f9f43c6a0ca45">ImageProtocol::ProtocolType</a> protType=<a class="el" href="classvisiontransfer_1_1ImageProtocol.html#a797817081629c3edcc1f9f43c6a0ca45a682786aac8c238e7f784506f7b7ecc7e">ImageProtocol::PROTOCOL_UDP</a>, bool server=false, int bufferSize=1048576, int maxUdpPacketSize=1472)</td></tr>
-<tr class="memdesc:a27741960cfb1407038449e5bb1e7cf3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new transfer object by manually specifying the target address.  <a href="#a27741960cfb1407038449e5bb1e7cf3d">More...</a><br /></td></tr>
-<tr class="separator:a27741960cfb1407038449e5bb1e7cf3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ab1fef6a63f38176beb6fc19e751905"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisiontransfer_1_1ImageTransfer.html#a3ab1fef6a63f38176beb6fc19e751905">ImageTransfer</a> (const char *address, const char *service=&quot;7681&quot;, <a class="el" href="classvisiontransfer_1_1ImageProtocol.html#a797817081629c3edcc1f9f43c6a0ca45">ImageProtocol::ProtocolType</a> protType=<a class="el" href="classvisiontransfer_1_1ImageProtocol.html#a797817081629c3edcc1f9f43c6a0ca45a682786aac8c238e7f784506f7b7ecc7e">ImageProtocol::PROTOCOL_UDP</a>, bool server=false, int bufferSize=16 *1048576, int maxUdpPacketSize=1472)</td></tr>
+<tr class="memdesc:a3ab1fef6a63f38176beb6fc19e751905"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new transfer object by manually specifying the target address.  <a href="#a3ab1fef6a63f38176beb6fc19e751905">More...</a><br /></td></tr>
+<tr class="separator:a3ab1fef6a63f38176beb6fc19e751905"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09994bb18afa0045ef0c993ee7538b56"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisiontransfer_1_1ImageTransfer.html#a09994bb18afa0045ef0c993ee7538b56">ImageTransfer</a> (const <a class="el" href="classvisiontransfer_1_1DeviceInfo.html">DeviceInfo</a> &amp;device, int bufferSize=1048576, int maxUdpPacketSize=1472)</td></tr>
 <tr class="memdesc:a09994bb18afa0045ef0c993ee7538b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new transfer object by using the device information from device enumeration.  <a href="#a09994bb18afa0045ef0c993ee7538b56">More...</a><br /></td></tr>
 <tr class="separator:a09994bb18afa0045ef0c993ee7538b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -138,9 +138,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab654665a1d0b924962e6507d6169149b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisiontransfer_1_1ImageTransfer.html#ab654665a1d0b924962e6507d6169149b">getRemoteAddress</a> () const</td></tr>
 <tr class="memdesc:ab654665a1d0b924962e6507d6169149b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the address of the remote host.  <a href="#ab654665a1d0b924962e6507d6169149b">More...</a><br /></td></tr>
 <tr class="separator:ab654665a1d0b924962e6507d6169149b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4072423e6871d286f008892c3f1025ba"><td class="memItemLeft" align="right" valign="top"><a id="a4072423e6871d286f008892c3f1025ba"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>statusReport</b> ()</td></tr>
-<tr class="separator:a4072423e6871d286f008892c3f1025ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for synchronous transfer of image sets. </p>
@@ -180,8 +177,8 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>statusReport</
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a27741960cfb1407038449e5bb1e7cf3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27741960cfb1407038449e5bb1e7cf3d">&#9670;&nbsp;</a></span>ImageTransfer() <span class="overload">[1/2]</span></h2>
+<a id="a3ab1fef6a63f38176beb6fc19e751905"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ab1fef6a63f38176beb6fc19e751905">&#9670;&nbsp;</a></span>ImageTransfer() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -214,7 +211,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>statusReport</
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>bufferSize</em> = <code>1048576</code>, </td>
+          <td class="paramname"><em>bufferSize</em> = <code>16*1048576</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -572,6 +569,12 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>statusReport</
 </div><div class="memdoc">
 
 <p>Performs a partial (or full) image transmission. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">block</td><td>If set to true, the method will block when the network send buffers are full. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>Status of the transmission. See below.</dd></dl>
 <p>The method transfers up to the specified number of valid bytes. It has to be called in cycles in order to transfer a full image set. If there is no more data to be transferred, it will return TransferStatus::NO_VALID_DATA.</p>
 <p>If the transfer is compete, the method will return TransferStatus::ALL_TRANSFERRED. If there remains outstanding data for this transfer, the return value will be TransferStatus::PARTIAL_TRANSFER. If the connection is no longer open, TransferStatus::CONNECTION_CLOSED is returned.</p>

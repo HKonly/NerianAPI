@@ -2,6 +2,7 @@
 #include <visiontransfer/deviceenumeration.h>
 #include <visiontransfer/datachannelservice.h>
 #include <visiontransfer/asynctransfer.h>
+#include <visiontransfer/imagetransfer.h>
 #include <visiontransfer/imageset.h>
 #include <unistd.h>
 #include <cstring>
@@ -23,11 +24,8 @@ int main() {
     DataChannelService service(devices[0]);
 
     printf("Creating Transfer\n");
-    AsyncTransfer transfer(devices[0]);
-
-    std::string addr = transfer.getRemoteAddress();
-    printf("%s ", addr.c_str());
-    printf(transfer.isConnected() ? "Connected\n" : "Not connected\n");
+    AsyncTransfer transfer("192.168.10.10", "7681", ImageProtocol::PROTOCOL_UDP);
+//    ImageTransfer transfer("192.168.10.10", "7681", ImageProtocol::PROTOCOL_UDP);
 
     usleep(250000);
     if(!service.imuAvailable()) {
@@ -38,16 +36,22 @@ int main() {
     int ssec=0, susec=0;
     int isec=0, iusec=0;
     printf("Operation start\n");
+    int count=0;
     while(true) {
         ImageSet image;
-        transfer.collectReceivedImageSet(image, 0.005);
-        printf("Number of Image: %d\n", image.getNumberOfImages());
-        image.getTimestamp(isec, iusec);
-        
-        TimestampedVector lin = service.imuGetLinearAcceleration();
-        lin.getTimestamp(ssec, susec);
-    
-        printf("[sensor] sec: %10d / usec: %10d  //  [image] sec: %10d / usec: %10d\n", ssec, susec, isec, iusec);
-        usleep(1000000);
+        if (transfer.collectReceivedImageSet(image, 0.0001)){
+//        if (transfer.receiveImageSet(image)){
+            image.getTimestamp(isec, iusec);
+            TimestampedVector lin = service.imuGetLinearAcceleration();
+            lin.getTimestamp(ssec, susec);
+            printf("%3d : [sensor] sec: %10d / usec: %10d  //  [image] sec: %10d / usec: %10d\n", ++count, ssec, susec, isec, iusec);
+            count = 0;
+        }
+        else {
+            TimestampedVector lin = service.imuGetLinearAcceleration();
+            lin.getTimestamp(ssec, susec);
+            printf("%3d : [sensor] sec: %10d / usec: %10d\n", ++count, ssec, susec);
+        }
+        usleep(1000);
     }
 }

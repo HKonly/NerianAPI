@@ -39,7 +39,7 @@ setup(
     name="visiontransfer",
     author="Nerian Vision GmbH",
     author_email="service@nerian.com",
-    version="9.0.2",
+    version="9.0.3",
     packages=["visiontransfer"],
     ext_modules=cythonize(
         Extension(

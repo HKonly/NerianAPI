@@ -71,7 +71,7 @@ public:
      */
     ImageTransfer(const char* address, const char* service = "7681",
         ImageProtocol::ProtocolType protType = ImageProtocol::PROTOCOL_UDP,
-        bool server = false, int bufferSize = 1048576, int maxUdpPacketSize = 1472);
+        bool server = false, int bufferSize = 16*1048576, int maxUdpPacketSize = 1472);
 
     /**
      * \brief Creates a new transfer object by using the device information
@@ -118,6 +118,8 @@ public:
     /**
      * \brief Performs a partial (or full) image transmission.
      *
+     * \param block If set to true, the method will block when the network
+     *        send buffers are full.
      * \return Status of the transmission. See below.
      *
      * The method transfers up to the specified number of valid bytes. It has to
@@ -215,7 +217,10 @@ public:
      */
     std::string getRemoteAddress() const;
 
+#ifndef DOXYGEN_SHOULD_SKIP_THIS
+    /// Prints status information to the console
     std::string statusReport();
+#endif
 
 private:
     // We follow the pimpl idiom

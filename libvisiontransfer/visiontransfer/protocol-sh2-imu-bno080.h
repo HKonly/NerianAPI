@@ -138,15 +138,17 @@ struct SH2Constants {
 };
 
 inline uint64_t sh2GetU64(const unsigned char* d) {
-   return d[0] | (d[1] << 8) | (d[2] << 16) | (d[3] << 24)
+   return static_cast<uint64_t>(d[0]) | (static_cast<uint64_t>(d[1]) << 8)
+       | (static_cast<uint64_t>(d[2]) << 16) | (static_cast<uint64_t>(d[3]) << 24)
        | (static_cast<uint64_t>(d[4]) << 32) | (static_cast<uint64_t>(d[5]) << 40)
        | (static_cast<uint64_t>(d[6]) << 48) | (static_cast<uint64_t>(d[7]) << 56);
 }
 inline uint32_t sh2GetU32(const unsigned char* d) {
-   return d[0] | (d[1] << 8) | (d[2] << 16) | (d[3] << 24);
+    return static_cast<uint64_t>(d[0]) | (static_cast<uint64_t>(d[1]) << 8) |
+        (static_cast<uint64_t>(d[2]) << 16) | (static_cast<uint64_t>(d[3]) << 24);
 }
 inline uint16_t sh2GetU16(const unsigned char* d) {
-   return d[0] | (d[1] << 8);
+   return static_cast<uint16_t>(d[0]) | (static_cast<uint16_t>(d[1]) << 8);
 }
 inline uint8_t sh2GetU8(const unsigned char* d) {
    return d[0];
@@ -239,7 +241,7 @@ inline int sh2GetSensorQPoint(unsigned int sensorReportID) {
         case SH2Constants::SENSOR_ARVR_STABILIZED_GAME_ROTATION_VECTOR: return 14;  //ID 0x29
         case SH2Constants::SENSOR_GYRO_INTEGRATED_ROTATION_VECTOR:      return 14;  //ID 0x2a // but 10 for angular velocity
         case SH2Constants::SENSOR_MOTION_REQUEST:                       return 0;   //ID 0x2b
-        default: return 0; 
+        default: return 0;
     }
 }
 
@@ -423,7 +425,7 @@ public:
     inline double getAccuracy() const { return sh2ConvertFixedQ16(sh2GetU16(accuracy), 12); } // Accuracy: shift 12
 };
 
-// 6-byte 1D sensor (pressure, ambient light, humidity, proximity, temperature, 
+// 6-byte 1D sensor (pressure, ambient light, humidity, proximity, temperature,
 // 16-byte data for *raw* accelerometer, gyro, magnetometer
 class SH2SensorReportRawAGM {
 private:

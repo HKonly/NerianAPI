@@ -273,15 +273,16 @@ bool ImageTransfer::Pimpl::tryAccept() {
         throw TransferException("Connections can only be accepted in tcp server mode");
     }
 
-    unique_lock<recursive_mutex> recvLock(receiveMutex);
-    unique_lock<recursive_mutex> sendLock(sendMutex);
-
     // Accept one connection
     SOCKET newSocket = Networking::acceptConnection(tcpServerSocket, remoteAddress);
     if(newSocket == INVALID_SOCKET) {
         // No connection
         return false;
     }
+
+    // For a new connection we require locks
+    unique_lock<recursive_mutex> recvLock(receiveMutex);
+    unique_lock<recursive_mutex> sendLock(sendMutex);
 
     if(clientSocket != INVALID_SOCKET) {
         Networking::closeSocket(clientSocket);
@@ -376,6 +377,7 @@ ImageTransfer::TransferStatus ImageTransfer::Pimpl::transferData() {
     }
 
     // Try transferring messages
+    bool wouldBlock = false;
     bool dataTransferred = (currentMsg != nullptr);
     while(currentMsg != nullptr) {
         int writing = (int)(currentMsgLen - currentMsgOffset);
@@ -385,7 +387,9 @@ ImageTransfer::TransferStatus ImageTransfer::Pimpl::transferData() {
             currentMsgOffset = 0;
             currentMsg = protocol->getTransferMessage(currentMsgLen);
         } else {
-            return WOULD_BLOCK;
+            // The operation would block
+            wouldBlock = true;
+            break;
         }
     }
 
@@ -410,6 +414,8 @@ ImageTransfer::TransferStatus ImageTransfer::Pimpl::transferData() {
 
     if(protocol->transferComplete()) {
         return ALL_TRANSFERRED;
+    } else if(wouldBlock) {
+        return WOULD_BLOCK;
     } else {
         return PARTIAL_TRANSFER;
     }
@@ -427,7 +433,7 @@ bool ImageTransfer::Pimpl::receiveImageSet(ImageSet& imageSet) {
 
         unsigned int time = static_cast<unsigned int>(std::chrono::duration_cast<std::chrono::milliseconds>(
             std::chrono::steady_clock::now() - startTime).count());
-        if(time > 1000) {
+        if(time > 100 && !complete) {
             return false;
         }
     }
@@ -467,7 +473,7 @@ bool ImageTransfer::Pimpl::receiveNetworkData(bool block) {
 
     // Test if the socket has data available
     if(!block && !selectSocket(true, false)) {
-        return 0;
+        return false;
     }
 
     int maxLength = 0;
@@ -488,7 +494,7 @@ bool ImageTransfer::Pimpl::receiveNetworkData(bool block) {
         TransferException ex("Error reading from socket: " + string(strerror(errno)));
         throw ex;
     } else if(bytesReceived > 0) {
-            protocol->processReceivedMessage(bytesReceived);
+        protocol->processReceivedMessage(bytesReceived);
         if(protocol->newClientConnected()) {
             // We have just established a new connection
             memcpy(&remoteAddress, &fromAddress, sizeof(remoteAddress));

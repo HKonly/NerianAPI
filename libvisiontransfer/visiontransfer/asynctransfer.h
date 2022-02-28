@@ -50,7 +50,7 @@ public:
      */
     AsyncTransfer(const char* address, const char* service = "7681",
         ImageProtocol::ProtocolType protType = ImageProtocol::PROTOCOL_UDP,
-        bool server = false, int bufferSize = 1048576, int maxUdpPacketSize = 1472);
+        bool server = false, int bufferSize = 16*1048576, int maxUdpPacketSize = 1472);
 
     /**
      * \brief Creates a new transfer object by using the device information

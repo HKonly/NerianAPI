@@ -1,1 +1,0 @@
-/usr/bin/c++   -O3 -Wall -march=native -std=c++14 -O3 -Wall -march=native -std=c++98  -rdynamic CMakeFiles/imu_data_channel_example.dir/imu_data_channel_example.cpp.o  -o imu_data_channel_example  -Wl,-rpath,/home/parallels/work/Huawei-context-IDS-2021/data_collector/test_codes/NerianAPI/libvisiontransfer/lib ../lib/libvisiontransfer.so -lpthread 

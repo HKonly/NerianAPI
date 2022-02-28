@@ -242,7 +242,10 @@ public:
      */
     const unsigned char* getNextControlMessage(int& length);
 
+#ifndef DOXYGEN_SHOULD_SKIP_THIS
+    /// Prints status information to the console
     std::string statusReport();
+#endif
 
 private:
     // We follow the pimpl idiom

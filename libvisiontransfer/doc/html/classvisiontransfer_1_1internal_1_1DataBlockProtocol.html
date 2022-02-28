@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libvisiontransfer
-   &#160;<span id="projectnumber">9.0.2</span>
+   &#160;<span id="projectnumber">9.0.3</span>
    </div>
   </td>
  </tr>
@@ -292,7 +292,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_OUTST
 
 <p>Returns the maximum payload size that can be received. </p>
 
-<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00315">315</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00333">333</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
 
 </div>
 </div>
@@ -322,7 +322,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_OUTST
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the message data or NULL if no message is pending.</dd></dl>
 <p>Control messages are only used if the UDP transfer protocol is selected. For TCP this method always returns a null pointer. </p>
 
-<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00710">710</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00728">728</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
 
 </div>
 </div>
@@ -351,7 +351,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_OUTST
 </dl>
 <p>The returned buffer is a subsection of the internal receive buffer. </p>
 
-<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00323">323</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00341">341</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
 
 </div>
 </div>
@@ -410,7 +410,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_OUTST
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the buffer containing the received data.</dd></dl>
 <p>The received data is valid until receiving the first network message for a new transfer. </p>
 
-<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00625">625</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00643">643</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
 
 </div>
 </div>
@@ -440,7 +440,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_OUTST
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the buffer containing the received header data.</dd></dl>
 <p>The received header data is valid until receiving the first network message for a new transfer. </p>
 
-<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00633">633</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00651">651</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
 
 </div>
 </div>
@@ -470,7 +470,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_OUTST
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the network message data.</dd></dl>
 <p>If the transfer has already been completed or if there are currently no more valid bytes to be transmitted, a null pointer is returned. </p>
 
-<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00193">193</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00195">195</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
 
 </div>
 </div>
@@ -492,7 +492,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_OUTST
 <p>Returns true if a remote connection is established. </p>
 <p>For TCP this method always returns true as connections are handled by the transport protocol. </p>
 
-<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00699">699</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00717">717</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
 
 </div>
 </div>
@@ -514,7 +514,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_OUTST
 <p>Returns true if the last network message has established a new connection from a client. </p>
 <p>For TCP this method always returns false as connections are handled by the transport protocol. </p>
 
-<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00769">769</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00787">787</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
 
 </div>
 </div>
@@ -554,7 +554,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_OUTST
 </dl>
 <p>Please see <a class="el" href="classvisiontransfer_1_1ImageProtocol.html#a29717803ccf0f15fb421a470b891f4ba" title="Handles a received network message. ">ImageProtocol::processReceivedMessage()</a> for further details. </p>
 
-<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00330">330</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00348">348</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
 
 </div>
 </div>
@@ -582,7 +582,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_OUTST
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00607">607</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00625">625</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
 
 </div>
 </div>
@@ -689,7 +689,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_OUTST
 <p>Part of <code>data</code> will be overwritten. There must be at least 4 additional allocated bytes at the end of <code>data</code>.</p>
 <p>If <code>validBytes</code> is set to a value smaller than the total transfer size, only a partial transfer is performed. Subsequent calls to <a class="el" href="classvisiontransfer_1_1internal_1_1DataBlockProtocol.html#aabdc18b2c26fe1725516a29540e50e04" title="Updates the number of valid bytes in a partial transfer. ">setTransferValidBytes()</a> are then necessary. </p>
 
-<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00159">159</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00161">161</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
 
 </div>
 </div>
@@ -775,7 +775,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_OUTST
 </dl>
 <p>This method has to be called whenever new data is available in a partial transfer. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classvisiontransfer_1_1internal_1_1DataBlockProtocol.html#aea6a2a2bf3002d258791bf5c988922c0" title="Sets the payload data for the next transfer. ">setTransferData()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00173">173</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00175">175</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
 
 </div>
 </div>
@@ -796,7 +796,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_OUTST
 
 <p>Returns true if the current transfer has been completed. </p>
 
-<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00308">308</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="datablockprotocol_8cpp_source.html#l00326">326</a> of file <a class="el" href="datablockprotocol_8cpp_source.html">datablockprotocol.cpp</a>.</p>
 
 </div>
 </div>

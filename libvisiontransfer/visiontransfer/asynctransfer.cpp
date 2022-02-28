@@ -82,7 +82,7 @@ private:
     // Objects for exchanging images with the send and receive threads
     ImageSet receivedSet;
     std::vector<unsigned char, AlignedAllocator<unsigned char> > receivedData[NUM_BUFFERS];
-    bool newDataReceived;
+    volatile bool newDataReceived;
 
     ImageSet sendImageSet;
     bool sendSetValid;
@@ -320,9 +320,13 @@ void AsyncTransfer::Pimpl::sendLoop() {
                 sendWaitCond.notify_one();
             }
 
-            if(!terminate) {
-                imgTrans.setTransferImageSet(imgSet);
-                imgTrans.transferData();
+            imgTrans.setTransferImageSet(imgSet);
+            while(!terminate) {
+                ImageTransfer::TransferStatus status = imgTrans.transferData();
+                if(status != ImageTransfer::PARTIAL_TRANSFER && status != ImageTransfer::WOULD_BLOCK) {
+                    break;
+                }
+                std::this_thread::sleep_for(std::chrono::milliseconds(SEND_THREAD_LONG_WAIT_MS));
             }
 
             if(deleteSet) {
