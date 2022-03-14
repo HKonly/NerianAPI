@@ -1,3 +1,3 @@
 #!/bin/bash
 
-g++ imutime_bug.cpp -Wall -L./libvisiontransfer/lib -I./libvisiontransfer -lvisiontransfer -pthread -Wl,-rpath ./libvisiontransfer/lib
+g++ source/imagetest.cpp -Wall -L./lib -I./include -lvisiontransfer -pthread -Wl,-rpath ./lib
