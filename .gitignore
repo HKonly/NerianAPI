@@ -6,5 +6,5 @@ cmake_install.cmake
 *.a
 *.o
 *.pgm
-exes
 save_images
+out
