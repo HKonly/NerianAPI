@@ -31,14 +31,14 @@ int main() {
         }
         printf("\n");
 
-        AsyncTransfer asyncTransfer("192.168.10.10", "7681", ImageProtocol::PROTOCOL_UDP);
+        AsyncTransfer asyncTransfer(devices[0], 16*1048576, 9000);
 
         int sec, nsec, psec, pnsec, secd, nsecd;
         for (int imageIdx=0; imageIdx<100; imageIdx++) {
             ImageSet imageSet;
             printf("Receiving image %2d    ", imageIdx+1);
             while(true) {
-                if (asyncTransfer.collectReceivedImageSet(imageSet, 0.005)) {
+                if (asyncTransfer.collectReceivedImageSet(imageSet, 1)) {
                     int num_images = imageSet.getNumberOfImages();
                     printf("Number of Images: %d\n", num_images);
                     start = system_clock::now();
