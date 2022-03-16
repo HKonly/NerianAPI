@@ -66,8 +66,13 @@ int main() {
                         psec = sec;
                         pnsec = nsec;
                     } 
+
+                    double delta = (double)secd + ((double)nsecd / 1000000.0);
         
-                    printf("Delta Time: %d.%06d    ", secd, nsecd);
+                    printf("Delta Time: %2.8lf    ", delta);
+
+                    double fps = 1.0 / delta;
+                    printf("FPS: %2.3lf    ", fps);
             
                     unsigned char* pixels;
                     int width, height, pixel_size, data_size;
