@@ -44,16 +44,10 @@ int main() {
                 0.1 /*timeout*/)) {
                 // Keep on trying until reception is successful
             }
- 
-            // Write all included images one after another
-            for(int imageNumber = 0; imageNumber < imageSet.getNumberOfImages(); imageNumber++) {
-                // Create PGM file
-                char fileName[100];
-                snprintf(fileName, sizeof(fileName), "save_images/image%03d_%d.pgm", i,
-                    imageNumber);
- 
-                imageSet.writePgmFile(imageNumber, fileName);
-            }
+
+            char fileName[100];
+            snprintf(fileName, sizeof(fileName), "save_images/image%03d.pgm", i);
+            imageSet.writePgmFile(0, fileName);
         }
 
         end = system_clock::now();
